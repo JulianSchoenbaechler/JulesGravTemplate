@@ -1,0 +1,13 @@
+# Settings
+.vscode
+
+# Project structure
+node_modules
+dist
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
