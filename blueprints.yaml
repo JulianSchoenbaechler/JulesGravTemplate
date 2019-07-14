@@ -1,0 +1,32 @@
+name: Jules
+version: 1.0.0
+description: Personal portfolio template
+icon: id-card
+author:
+  name: Julian Schönbächler
+  email: info@julian-s.ch
+  url: https://julian-s.ch/
+homepage: https://github.com/JulianSchoenbaechler/JulesGravTemplate
+demo: https://julian-s.ch/
+keywords: julian, schoenbaechler, portfolio, theme, responsive, html5, css3
+bugs: https://github.com/JulianSchoenbaechler/JulesGravTemplate/issues
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }
+
+form:
+  validation: loose
+
+  fields:
+    production-mode:
+      type: toggle
+      label: Production mode
+      help: When enabled, the template will render with minified CSS
+      highlight: 1
+      default: 1
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
