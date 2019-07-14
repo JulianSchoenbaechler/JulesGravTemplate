@@ -1,0 +1,11 @@
+{% macro toplevel_nav(page) %}
+  {% import _self as macros %}
+  {% for p in page.children.visible %}
+    {% set is_active = p.active ? 'active' : '' %}
+    <li>
+      <a href="{{ p.url }}" class="{{ is_active }}">
+        {{ p.menu }}
+      </a>
+    </li>
+  {% endfor %}
+{% endmacro %}

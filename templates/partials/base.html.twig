@@ -1,0 +1,58 @@
+{% set compress = theme_var('production-mode') ? '.min.css' : '.css' %}
+<!DOCTYPE html>
+<html lang="{{ grav.language.getActive ?: grav.config.site.default_lang }}">
+
+<head>
+{% block head deferred %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% include 'partials/metadata.html.twig' %}
+
+  <title>{% if page.title %}{{ page.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
+
+  <link rel="canonical" href="{{ page.url(true, true) }}">
+{% endblock head %}
+
+{% block stylesheets %}
+    {% do assets.addCss('theme://css/normalize.min.css') %}
+    {% do assets.addCss('theme://css/fonts.min.css') %}
+    {% do assets.addCss('theme://css/main'~compress) %}
+{% endblock %}
+
+{% block javascripts %}
+    {% do assets.addJs('theme://js/main.min.js') %}
+{% endblock %}
+
+{% block assets deferred %}
+    {{ assets.css()|raw }}
+    {{ assets.js()|raw }}
+{% endblock %}
+</head>
+
+<body>
+
+  {% block header %}
+    {% include 'partials/header.html.twig' %}
+  {% endblock %}
+
+  {% block main %}
+  <div class="wrapper">
+    <main role="main" id="main">
+      <section>
+        {% block content %}{% endblock %}
+      </section>
+    </main>
+  </div>
+  {% endblock %}
+
+  {% block footer %}
+    {% include 'partials/footer.html.twig' %}
+  {% endblock %}
+
+  {% block bottom %}
+    {{ assets.js('bottom') }}
+  {% endblock %}
+</body>
+
+</html>

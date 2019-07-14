@@ -30,3 +30,71 @@ form:
         0: Disabled
       validate:
         type: bool
+
+    name:
+      type: text
+      label: Author Name
+      help: Name of the portfolio author
+      size: long
+      default: 'Jules'
+
+    github-name:
+      type: text
+      label: GitHub Username
+      help: The GitHub username of the author
+      size: medium
+      default: ''
+
+    github-link:
+      type: text
+      label: GitHub Link
+      help: The URL to the authors GitHub page
+      size: long
+      default: ''
+
+    twitter-name:
+      type: text
+      label: Twitter Username
+      help: The Twitter username of the author
+      size: medium
+      default: ''
+
+    twitter-link:
+      type: text
+      label: Twitter Link
+      help: The URL to the authors Twitter page
+      size: long
+      default: ''
+
+    youtube-name:
+      type: text
+      label: YouTube Username
+      help: The YouTube username of the author
+      size: medium
+      default: ''
+
+    youtube-link:
+      type: text
+      label: YouTube Link
+      help: The URL to the authors YouTube page
+      size: long
+      default: ''
+
+    contact-email:
+      type: text
+      label: Contact E-Mail
+      help: The contact e-mail address
+      size: long
+      default: ''
+
+    blog_section:
+      type: section
+      title: Blog Defaults
+      underline: true
+
+    blog-page:
+      type: text
+      label: Blog Page
+      help: The route to the blog page when working with blog sidebar
+      size: medium
+      default: '/blog'
