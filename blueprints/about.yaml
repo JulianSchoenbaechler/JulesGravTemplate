@@ -1,0 +1,28 @@
+title: Project
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        info:
+          type: tab
+          title: Image
+
+          fields:
+            header.image:
+              type: filepicker
+              folder: 'self@'
+              preview_images: true
+              accept:
+                - 'image/*'
+                - '.jpg'
+                - '.png'
+                - '.gif'
+              label: 'Image'
+              help: 'Select an image'

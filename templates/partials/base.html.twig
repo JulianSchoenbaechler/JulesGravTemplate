@@ -1,5 +1,13 @@
 {% set compress = theme_var('production-mode') ? '.min.css' : '.css' %}
 
+{% set github_name = theme_var('github-name') %}
+{% set github_link = theme_var('github-link') %}
+{% set twitter_name = theme_var('twitter-name') %}
+{% set twitter_link = theme_var('twitter-link') %}
+{% set youtube_name = theme_var('youtube-name') %}
+{% set youtube_link = theme_var('youtube-link') %}
+{% set contact_email = theme_var('contact-email')|safe_email %}
+
 <!DOCTYPE html>
 <html lang="{{ grav.language.getActive ?: grav.config.site.default_lang }}">
 
