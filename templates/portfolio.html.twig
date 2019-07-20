@@ -1,17 +1,11 @@
 {% extends 'partials/base.html.twig' %}
 
-{% block main %}
-  <div class="wrapper">
-    <main role="main" id="main">
-      <section>
-        <h1>{{ page.title|e }}</h1>
-        {{ page.content|raw }}
-        <div class="grid padded">
-          {% for project in page.header.portfolio %}
-            {% include 'partials/portfolio/item.html.twig' %}
-          {% endfor %}
-        </div>
-      </section>
-    </main>
+{% block content %}
+  <h1>{{ page.title|e }}</h1>
+  {{ page.content|raw }}
+  <div class="grid padded">
+    {% for project in page.header.portfolio %}
+      {% include 'partials/portfolio/item.html.twig' %}
+    {% endfor %}
   </div>
 {% endblock %}

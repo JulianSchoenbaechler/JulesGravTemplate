@@ -2,7 +2,7 @@
 
 <header role="banner" id="header">
   <div class="wrapper">
-    <h1><a href="{{ home_url }}">{{ name }}</a></h1>
+    <h1><a href="{{ home_url }}">{{ name|e }}</a></h1>
     <button class="hamburger" type="button" onclick="toggleNavigation(event)"
             aria-label="Menu" aria-controls="navigation">
       <span class="hamburger-box">
