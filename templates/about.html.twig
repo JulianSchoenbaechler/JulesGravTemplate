@@ -2,7 +2,7 @@
 {% set name = theme_var('name') ?: 'Jules' %}
 
 {% block content %}
-  <h1>About</h1>
+  <h1>{{ page.title|e }}</h1>
   <div class="grid">
     <div class="grid-element-1-1 grid-element-m-1-3">
       <img src="{{ page.media[page.header.image].url }}" alt="{{ name|e }}">
