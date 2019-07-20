@@ -98,3 +98,12 @@ form:
       help: The route to the blog page when working with blog sidebar
       size: medium
       default: '/blog'
+
+    blog-articles-per-page:
+      type: text
+      label: Articles per Page
+      help: The amount of article summaries per page
+      size: small
+      default: 5
+      validate:
+        type: int

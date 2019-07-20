@@ -1,0 +1,19 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block javascripts %}
+    {% do assets.addJs('theme://js/paper-full.min.js') %}
+    {% do assets.addJs('theme://js/delaunay.min.js') %}
+{% endblock %}
+
+{% block header %}
+  {% include 'partials/landing/header.html.twig' %}
+{% endblock %}
+
+{% block main %}
+  <!-- landing page -->
+{% endblock %}
+
+{% block bottom %}
+  <script type="text/paperscript" src="{{ url('theme://js/pattern.min.js') }}" canvas="header-background"></script>
+  {{ assets.js('bottom') }}
+{% endblock %}

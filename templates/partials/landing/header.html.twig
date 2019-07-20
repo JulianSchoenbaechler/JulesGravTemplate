@@ -1,0 +1,10 @@
+{% set name = theme_var('name') ?: 'Jules' %}
+<header role="banner" id="header" class="landing">
+  <canvas id="header-background" resize></canvas>
+  <div class="wrapper">
+    <h1>{{ name }}</h1>
+    <nav role="navigation">
+      {% include 'partials/navigation.html.twig' %}
+    </nav>
+  </div>
+</header>

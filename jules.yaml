@@ -9,3 +9,4 @@ youtube-name: ''
 youtube-link: ''
 contact-email: ''
 blog-page: '/blog'
+blog-articles-per-page: 5

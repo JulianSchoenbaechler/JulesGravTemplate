@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% include 'partials/metadata.html.twig' %}
 
-  <title>{% if page.title %}{{ page.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
+  <title>{% if page.title %}{{ page.title|e }} | {% endif %}{{ site.title|e }}</title>
 
   <link rel="canonical" href="{{ page.url(true, true) }}">
 {% endblock head %}
@@ -31,7 +31,6 @@
 </head>
 
 <body>
-
   {% block header %}
     {% include 'partials/header.html.twig' %}
   {% endblock %}

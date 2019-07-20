@@ -1,0 +1,52 @@
+title: Portfolio
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        portfolio:
+          type: tab
+          title: Portfolio
+
+          fields:
+            header.portfolio:
+              type: list
+              style: vertical
+              label: Projects
+
+              fields:
+                .title:
+                  type: text
+                  size: medium
+                  label: 'Title'
+                  help: 'The project title'
+                .description:
+                  type: text
+                  size: medium
+                  label: 'Description'
+                  help: 'A very small project description'
+                .image:
+                  type: filepicker
+                  folder: 'self@'
+                  preview_images: true
+                  accept:
+                    - 'image/*'
+                    - '.jpg'
+                    - '.png'
+                    - '.gif'
+                  label: 'Image'
+                  help: 'Select an image for this project'
+                .link:
+                  type: pages
+                  size: medium
+                  label: 'Page Link'
+                  show_all: false
+                  show_modular: false
+                  show_root: false
+                  help: 'The page this project field will link to'
