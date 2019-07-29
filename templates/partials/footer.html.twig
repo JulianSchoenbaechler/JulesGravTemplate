@@ -6,8 +6,12 @@
       <nav role="navigation">
         <ul>
           <li><a href="/privacy">Privacy Policy</a></li>
-          {% if config.plugins.sitemap.enabled %}<li><a href="/sitemap">Sitemap</a></li>{% endif %}
-          {% if contact_email|length > 0 %}<li><a href="{{ 'mailto:'~contact_email }}">Contact</a></li>{% endif %}
+          {% if config.plugins.sitemap.enabled %}
+            <li><a href="{{ config.plugins.sitemap.route }}">Sitemap</a></li>
+          {% endif %}
+          {% if contact_email|length > 0 %}
+            <li><a href="{{ 'mailto:'~contact_email }}">Contact</a></li>
+          {% endif %}
         </ul>
       </nav>
     </div>

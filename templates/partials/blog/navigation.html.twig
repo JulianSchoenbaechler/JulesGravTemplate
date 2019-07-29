@@ -1,0 +1,11 @@
+{% import 'macros/macros.html.twig' as macros %}
+
+<section>
+  <h3>Navigation</h3>
+  <nav role="navigation">
+    <ul>
+      {{ macros.blog_nav(page.find(blog_route)) }}
+    </ul>
+  </nav>
+  <hr>
+</section>

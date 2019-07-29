@@ -1,0 +1,18 @@
+<article>
+  <header>
+    <h2><a href="{{ article.url }}">{{ article.title|e }}</a></h2>
+    <div class="meta">
+      <time>{{ article.date|date(system.pages.dateformat.short ?: system.pages.dateformat.default) }}</time>
+      |
+      <ul>
+        {% if 'blog' in article.taxonomy.category %}
+          {% for tag in article.taxonomy.tag %}
+            <li><a href="{{ blog_route ~ '/search/tag:' ~ tag }}" rel="tag">{{ tag }}</a></li>
+          {% endfor %}
+        {% endif %}
+      </ul>
+    </div>
+  </header>
+  {{ article.summary }}
+  <hr>
+</article>

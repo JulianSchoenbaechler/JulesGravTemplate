@@ -12,31 +12,42 @@
 <html lang="{{ grav.language.getActive ?: grav.config.site.default_lang }}">
 
 <head>
-{% block head deferred %}
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {% include 'partials/metadata.html.twig' %}
+  {% block head deferred %}
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    {% include 'partials/metadata.html.twig' %}
 
-  <title>{% if page.title %}{{ page.title|e }} | {% endif %}{{ site.title|e }}</title>
+    <title>
+      {% if page.title %}
+        {{ page.title|e }}
+        |
+      {% endif %}
+      {{ site.title|e }}</title>
 
-  <link rel="canonical" href="{{ page.url(true, true) }}">
-{% endblock head %}
+    <link rel="canonical" href="{{ page.url(true, true) }}">
 
-{% block stylesheets %}
+    {% if config.plugins.feed.enabled %}
+      <link rel="alternate" type="application/rss+xml" title="Page Feed" href="{{ base_url }}.rss"/>
+      <link rel="alternate" type="application/atom+xml" title="Page Feed" href="{{ base_url }}.atom"/>
+    {% endif %}
+
+  {% endblock head %}
+
+  {% block stylesheets %}
     {% do assets.addCss('theme://css/normalize.min.css') %}
     {% do assets.addCss('theme://css/fonts.min.css') %}
     {% do assets.addCss('theme://css/main'~compress) %}
-{% endblock %}
+  {% endblock %}
 
-{% block javascripts %}
+  {% block javascripts %}
     {% do assets.addJs('theme://js/main.min.js') %}
-{% endblock %}
+  {% endblock %}
 
-{% block assets deferred %}
+  {% block assets deferred %}
     {{ assets.css()|raw }}
     {{ assets.js()|raw }}
-{% endblock %}
+  {% endblock %}
 </head>
 
 <body>
@@ -45,13 +56,13 @@
   {% endblock %}
 
   {% block main %}
-  <div class="wrapper">
-    <main role="main" id="main">
-      <section>
-        {% block content %}{% endblock %}
-      </section>
-    </main>
-  </div>
+    <div class="wrapper">
+      <main id="main" role="main">
+        <section>
+          {% block content %}{% endblock %}
+        </section>
+      </main>
+    </div>
   {% endblock %}
 
   {% block footer %}

@@ -1,11 +1,48 @@
 {% macro toplevel_nav(page) %}
   {% import _self as macros %}
+
   {% for p in page.children.visible %}
-    {% set is_active = p.active ? 'active' : '' %}
+    {% set is_active = p.active or p.activeChild() ? 'active' : '' %}
     <li>
       <a href="{{ p.url }}" class="{{ is_active }}">
         {{ p.menu }}
       </a>
     </li>
   {% endfor %}
+
+{% endmacro %}
+
+{% macro blog_nav(page) %}
+  {% import _self as macros %}
+
+  {% set all_children = page.children.visible.order('date', 'desc') %}
+  {% set nav_collection = {} %}
+  {% set date_nav = '' %}
+
+  {% for p in all_children %}
+    {% if not date_nav is same as(p.date|date('F Y')) %}
+      {% set date_nav = p.date|date('F Y') %}
+      {% set nav_collection = nav_collection|merge({
+        (date_nav): all_children|filter(c => c.date|date('F Y') is same as(date_nav))
+      }) %}
+    {% endif %}
+  {% endfor %}
+
+  {% for d, p in nav_collection %}
+    <li>
+      <a href="#" onclick="toggleTreeElement(event)">
+        <i class="fas fa-angle-right"></i>
+        {{- d ~ ' (' ~ p|length ~ ')' }}
+      </a>
+    </li>
+    <ul>
+      {% for a in p %}
+        <li>
+          <a href="{{ a.url }}">{{ a.menu }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+
+  {% endfor %}
+
 {% endmacro %}
