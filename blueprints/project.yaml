@@ -46,3 +46,23 @@ form:
                     - '.gif'
                   label: 'Image'
                   help: 'Select an image'
+                .width:
+                  type: number
+                  size: x-small
+                  default: 640
+                  label: 'Preview Width'
+                  help: 'The image width in the gallery'
+                  validate:
+                    type: number
+                    min: 20
+                    step: 1
+                .height:
+                  type: number
+                  size: x-small
+                  default: 360
+                  label: 'Preview Height'
+                  help: 'The image height in the gallery'
+                  validate:
+                    type: number
+                    min: 20
+                    step: 1

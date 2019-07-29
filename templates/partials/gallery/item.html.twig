@@ -1,3 +1,5 @@
 <div class="grid-element-1-1 grid-element-s-1-2">
-  <img class="gallery" src="{{ page.media[item.image].url }}" alt="{{ item.title|e }}">
+  <a href="{{ page.media[item.image].url }}" rel="lightbox">
+    <img class="gallery" src="{{ page.media[item.image].cropResize(item.width ?: 640, item.height ?: 360).url }}" alt="{{ item.title|e }}">
+  </a>
 </div>
