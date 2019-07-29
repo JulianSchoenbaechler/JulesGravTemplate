@@ -87,6 +87,18 @@ form:
       size: long
       default: ''
 
+    page_section:
+      type: section
+      title: Page Defaults
+      underline: true
+
+    privacy-page:
+      type: text
+      label: Privacy Page
+      help: The route to the privacy policy
+      size: medium
+      default: '/privacy'
+
     blog_section:
       type: section
       title: Blog Defaults
