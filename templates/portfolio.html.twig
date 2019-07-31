@@ -8,4 +8,12 @@
       {% include 'partials/portfolio/item.html.twig' %}
     {% endfor %}
   </div>
+  {% if page.header.project_list|length > 0 %}
+    <h2>{{ page.header.project_list_title|e }}</h2>
+    <div class="grid">
+      {% for project in page.header.project_list %}
+        {% include 'partials/portfolio/list-item.html.twig' %}
+      {% endfor %}
+    </div>
+  {% endif %}
 {% endblock %}
