@@ -1,0 +1,16 @@
+{% set name = theme_var('name') ?: 'Jules' %}
+
+<header role="banner" id="header">
+  <div class="wrapper">
+    <h1><a href="{{ home_url }}">{{ name|e }}</a></h1>
+    <button class="hamburger" type="button" onclick="toggleNavigation(event)"
+            aria-label="Menu" aria-controls="navigation">
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <nav role="navigation">
+      {% include 'partials/navigation.html.twig' %}
+    </nav>
+  </div>
+</header>

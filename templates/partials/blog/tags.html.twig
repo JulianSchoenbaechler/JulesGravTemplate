@@ -1,0 +1,13 @@
+{% set taxlist = children_only is defined ? taxonomylist.getChildPagesTags() : taxonomylist.get() %}
+
+{% if taxlist %}
+  <section>
+    <h3>Tags</h3>
+    {% for tax,value in taxlist[taxonomy] %}
+      <span class="tag">
+        <a href="{{ base_url ~ '/search/' ~ taxonomy ~ config.system.param_sep ~ tax }}" rel="tag">{{ tax }}</a>
+      </span>
+    {% endfor %}
+    <hr>
+  </section>
+{% endif %}

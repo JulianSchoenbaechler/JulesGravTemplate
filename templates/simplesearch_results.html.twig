@@ -1,0 +1,27 @@
+{% extends 'partials/blog-base.html.twig' %}
+{% set tag = uri.param('tag') %}
+
+{% block content %}
+  <section>
+    <h1>{{ 'PLUGIN_SIMPLESEARCH.SEARCH_RESULTS'|t }}</h1>
+    <p>
+      {% if query %}
+        {% set count = search_results ? search_results.count : 0 %}
+        {% if count is same as(1) %}
+          {{ 'PLUGIN_SIMPLESEARCH.SEARCH_RESULTS_SUMMARY_SINGULAR'|t(query|e)|raw }}
+        {% else %}
+          {{ 'PLUGIN_SIMPLESEARCH.SEARCH_RESULTS_SUMMARY_PLURAL'|t(query|e, count)|raw }}
+        {% endif %}
+        <hr>
+      {% elseif tag %}
+        Articles with tag:
+        <strong>{{ tag|e }}</strong>
+        <hr>
+        {% set search_results = taxonomy.findTaxonomy({ 'tag': tag, 'category': 'blog' }) %}
+      {% endif %}
+    </p>
+    {% for article in search_results.order('date', 'desc') %}
+      {% include 'partials/blog/item.html.twig' with { 'article': article } %}
+    {% endfor %}
+  </section>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'partials/blog-base.html.twig' %}
+{% set max_article_count = theme_var('blog-articles-per-page') ?: 5 %}
+{% set before_date = uri.param('before') %}
+{% set after_date = uri.param('after') %}
+{% set collection = page.collection({
+    'items': '@self.children',
+    'dateRange': {
+      'start': (after_date ?: 0)|date('m/d/Y H:i:s'),
+      'end': (before_date ?: 'now')|date('m/d/Y H:i:s')
+    },
+    'limit': max_article_count + 1,
+    'order': { 'by': 'date', 'dir': after_date ? 'asc' : 'desc' }
+  }) %}
+
+{% block content %}
+  <section>
+    <h1>{{ page.title|e }}</h1>
+    {% if page.content|length > 0 %}
+      {{ page.content|raw }}
+      <hr>
+    {% endif %}
+
+    {% for child in collection.order('date', 'desc') %}
+      {% if loop.index0 < max_article_count %}
+        {% include 'partials/blog/item.html.twig' with { 'article': child } %}
+      {% endif %}
+    {% endfor %}
+
+    <div class="clearfix">
+      {% if after_date %}
+        <p class="float-right">
+          <a href="{{ blog_route ~ '/before' ~ config.system.param_sep ~ collection|last.date }}">View older articles
+            <i class="fas fa-angle-right"></i>
+          </a>
+        </p>
+        {% if collection|length > max_article_count %}
+          <p class="float-left">
+            <a href="{{ blog_route ~ '/after' ~ config.system.param_sep ~ (collection|last.date + 1) }}">
+              <i class="fas fa-angle-left"></i>
+              View newer articles</a>
+          </p>
+        {% endif %}
+      {% else %}
+        {% if collection|length > max_article_count %}
+          <p class="float-right">
+            <a href="{{ blog_route ~ '/before' ~ config.system.param_sep ~ collection|last.date }}">View older articles
+              <i class="fas fa-angle-right"></i>
+            </a>
+          </p>
+        {% endif %}
+        {% if before_date %}
+          <p class="float-left">
+            <a href="{{ blog_route ~ '/after' ~ config.system.param_sep ~ (collection|last.date + 1) }}">
+              <i class="fas fa-angle-left"></i>
+              View newer articles</a>
+          </p>
+        {% endif %}
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}

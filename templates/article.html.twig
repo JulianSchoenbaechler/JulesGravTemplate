@@ -1,0 +1,27 @@
+{% extends 'partials/blog-base.html.twig' %}
+
+{% block content %}
+  <article>
+    <header>
+      <h1>{{ page.title|e }}</h1>
+      <div class="meta">
+        <time>{{ page.date|date(system.pages.dateformat.short ?: system.pages.dateformat.default) }}</time>
+        |
+        <ul>
+          {% if 'blog' in page.taxonomy.category %}
+            {% for tag in page.taxonomy.tag %}
+              <li><a href="{{ blog_route ~ '/search/tag:' ~ tag }}" rel="tag">{{ tag }}</a></li>
+            {% endfor %}
+          {% endif %}
+        </ul>
+      </div>
+    </header>
+
+    {{ page.content|raw }}
+
+    <hr>
+    <p>
+      <a href="{{ blog_route }}">Back to the overview...</a>
+    </p>
+  </article>
+{% endblock %}

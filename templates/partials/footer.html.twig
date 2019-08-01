@@ -1,0 +1,36 @@
+<footer role="contentinfo" id="footer">
+  <div class="wrapper">
+    <div class="left">
+      <small>Copyright &copy;
+        <time>{{ now|date('Y') }}</time>, {{ theme_var('name') }}</small>
+      <nav role="navigation">
+        <ul>
+          <li><a href="{{ theme_var('privacy-page') }}">Privacy Policy</a></li>
+          {% if config.plugins.sitemap.enabled %}
+            <li><a href="{{ config.plugins.sitemap.route }}">Sitemap</a></li>
+          {% endif %}
+          {% if contact_email|length > 0 %}
+            <li><a href="{{ 'mailto:'~contact_email }}">Contact</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+    <div class="right social">
+      {% if github_link|length > 0 %}
+        <a href="{{ github_link }}" rel="noopener noreferrer" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      {% endif %}
+      {% if twitter_link|length > 0 %}
+        <a href="{{ twitter_link }}" rel="noopener noreferrer" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      {% endif %}
+      {% if youtube_link|length > 0 %}
+        <a href="{{ youtube_link }}" rel="noopener noreferrer" target="_blank">
+          <i class="fab fa-youtube"></i>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</footer>

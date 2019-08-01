@@ -1,3 +1,13 @@
 enabled: true
 production-mode: true
+name: ''
+github-name: ''
+github-link: ''
+twitter-name: ''
+twitter-link: ''
+youtube-name: ''
+youtube-link: ''
+contact-email: ''
+privacy-page: '/privacy'
 blog-page: '/blog'
+blog-articles-per-page: 5

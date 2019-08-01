@@ -1,0 +1,78 @@
+{% set compress = theme_var('production-mode') ? '.min.css' : '.css' %}
+
+{% set github_name = theme_var('github-name') %}
+{% set github_link = theme_var('github-link') %}
+{% set twitter_name = theme_var('twitter-name') %}
+{% set twitter_link = theme_var('twitter-link') %}
+{% set youtube_name = theme_var('youtube-name') %}
+{% set youtube_link = theme_var('youtube-link') %}
+{% set contact_email = theme_var('contact-email')|safe_email %}
+
+<!DOCTYPE html>
+<html lang="{{ grav.language.getActive ?: grav.config.site.default_lang }}">
+
+<head>
+  {% block head deferred %}
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include 'partials/metadata.html.twig' %}
+    <meta name="msapplication-TileColor" content="#eeeeee">
+    <meta name="msapplication-TileImage" content="{{ theme_url }}/images/icons/mstile-150x150.png">
+
+    <title>{% if page.title %} {{ page.title|e }} | {% endif %} {{ site.title|e }}</title>
+
+    <link href="{{ theme_url }}/images/icons/apple-touch-icon.png" sizes="180x180" rel="apple-touch-icon">
+    <link href="{{ theme_url }}/images/icons/favicon-32x32.png" sizes="32x32" type="image/png" rel="icon">
+    <link href="{{ theme_url }}/images/icons/favicon-16x16.png" sizes="16x16" type="image/png" rel="icon">
+    <link href="{{ theme_url }}/images/icons/site.webmanifest" rel="manifest">
+    <link href="{{ theme_url }}/images/icons/safari-pinned-tab.svg" color="#1F1D2A" rel="mask-icon">
+    <link href="{{ theme_url }}/images/icons/favicon.ico" rel="shortcut icon">
+
+    {% block head_links %}
+      <link href="{{ page.url(true, true) }}" rel="canonical">
+    {% endblock %}
+
+  {% endblock head %}
+
+  {% block stylesheets %}
+    {% do assets.addCss('theme://css/normalize.min.css') %}
+    {% do assets.addCss('theme://css/fonts.min.css') %}
+    {% do assets.addCss('theme://css/main' ~ compress) %}
+  {% endblock %}
+
+  {% block javascripts %}
+    {% do assets.addJs('theme://js/main.min.js') %}
+  {% endblock %}
+
+  {% block assets deferred %}
+    {{ assets.css()|raw }}
+    {{ assets.js()|raw }}
+  {% endblock %}
+</head>
+
+<body>
+  {% block header %}
+    {% include 'partials/header.html.twig' %}
+  {% endblock %}
+
+  {% block main %}
+    <div class="wrapper">
+      <main id="main" role="main">
+        <section>
+          {% block content %}{% endblock %}
+        </section>
+      </main>
+    </div>
+  {% endblock %}
+
+  {% block footer %}
+    {% include 'partials/footer.html.twig' %}
+  {% endblock %}
+
+  {% block bottom %}
+    {{ assets.js('bottom') }}
+  {% endblock %}
+</body>
+
+</html>

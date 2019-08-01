@@ -1,0 +1,16 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  <h1>{{ page.title|e }}</h1>
+  {{ page.content|raw }}
+  <div class="grid">
+    <div class="grid-element-1-1 grid-element-m-2-3 grid-element-l-3-4 grid padded">
+      {% for item in page.header.gallery %}
+        {% include 'partials/gallery/item.html.twig' %}
+      {% endfor %}
+    </div>
+    <div class="grid-element-1-1 grid-element-m-1-3 grid-element-l-1-4 infobox">
+      {% include 'partials/project/infobox.html.twig' %}
+    </div>
+  </div>
+{% endblock %}

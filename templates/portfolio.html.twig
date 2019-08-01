@@ -1,0 +1,19 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  <h1>{{ page.title|e }}</h1>
+  {{ page.content|raw }}
+  <div class="grid padded">
+    {% for project in page.header.portfolio %}
+      {% include 'partials/portfolio/item.html.twig' %}
+    {% endfor %}
+  </div>
+  {% if page.header.project_list|length > 0 %}
+    <h2>{{ page.header.project_list_title|e }}</h2>
+    <div class="grid">
+      {% for project in page.header.project_list %}
+        {% include 'partials/portfolio/list-item.html.twig' %}
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %}
