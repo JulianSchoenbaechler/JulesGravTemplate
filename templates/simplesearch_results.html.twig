@@ -20,7 +20,7 @@
         {% set search_results = taxonomy.findTaxonomy({ 'tag': tag, 'category': 'blog' }) %}
       {% endif %}
     </p>
-    {% for article in search_results %}
+    {% for article in search_results.order('date', 'desc') %}
       {% include 'partials/blog/item.html.twig' with { 'article': article } %}
     {% endfor %}
   </section>

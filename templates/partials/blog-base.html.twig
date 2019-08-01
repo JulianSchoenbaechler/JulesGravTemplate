@@ -15,7 +15,7 @@
           {% include 'simplesearch_searchbox.html.twig' %}
         {% endif %}
 
-        {% if config.plugins.taxonomylist.enabled %}
+        {% if config.plugins.simplesearch.enabled and config.plugins.taxonomylist.enabled %}
           {% include 'partials/blog/tags.html.twig' with { base_url: blog_route, taxonomy: 'tag' } %}
         {% endif %}
 
