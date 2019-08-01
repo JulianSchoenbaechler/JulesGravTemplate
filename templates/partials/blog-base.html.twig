@@ -1,6 +1,14 @@
 {% extends 'partials/base.html.twig' %}
 {% set blog_route = header_var('blog_url')|defined(theme_var('blog-page')) %}
 
+{% block head_links %}
+  <link href="{{ page.url(true, true) }}" rel="canonical">
+  {% if config.plugins.feed.enabled %}
+    <link href="{{ blog_route }}.rss" title="Page Feed" type="application/rss+xml" rel="alternate"/>
+    <link href="{{ blog_route }}.atom" title="Page Feed" type="application/atom+xml" rel="alternate"/>
+  {% endif %}
+{% endblock %}
+
 {% block main %}
   <div class="wrapper">
     <div class="grid">

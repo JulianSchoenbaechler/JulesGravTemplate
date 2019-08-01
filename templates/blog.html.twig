@@ -6,7 +6,7 @@
     'items': '@self.children',
     'dateRange': {
       'start': (after_date ?: 0)|date('m/d/Y H:i:s'),
-      'end': (before_date ?: now)|date('m/d/Y H:i:s')
+      'end': (before_date ?: 'now')|date('m/d/Y H:i:s')
     },
     'limit': max_article_count + 1,
     'order': { 'by': 'date', 'dir': after_date ? 'asc' : 'desc' }

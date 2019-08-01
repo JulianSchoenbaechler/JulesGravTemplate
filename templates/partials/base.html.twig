@@ -18,19 +18,11 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     {% include 'partials/metadata.html.twig' %}
 
-    <title>
-      {% if page.title %}
-        {{ page.title|e }}
-        |
-      {% endif %}
-      {{ site.title|e }}</title>
+    <title>{% if page.title %} {{ page.title|e }} | {% endif %} {{ site.title|e }}</title>
 
-    <link rel="canonical" href="{{ page.url(true, true) }}">
-
-    {% if config.plugins.feed.enabled %}
-      <link rel="alternate" type="application/rss+xml" title="Page Feed" href="{{ base_url }}.rss"/>
-      <link rel="alternate" type="application/atom+xml" title="Page Feed" href="{{ base_url }}.atom"/>
-    {% endif %}
+    {% block head_links %}
+      <link href="{{ page.url(true, true) }}" rel="canonical">
+    {% endblock %}
 
   {% endblock head %}
 
