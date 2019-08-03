@@ -4,6 +4,7 @@
 1. [](#improved)
     * Updated Jules CSS template to the newest version
     * Newer version of Paper.js
+    * Prevent large images on project list in portfolio template
 
 # v1.0.1
 ## 08/02/2019
