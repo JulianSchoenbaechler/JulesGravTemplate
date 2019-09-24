@@ -1,3 +1,9 @@
+# v1.0.3
+## 09/24/2019
+
+1. [](#improved)
+    * Added 'Continue reading...' link to blog items
+
 # v1.0.2
 ## 08/03/2019
 
